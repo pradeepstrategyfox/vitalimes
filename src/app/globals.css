@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #fefcf3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cream);
+  color: #241f1b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer components {
+  .container-vl {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-leaf-700 px-7 py-3.5 text-sm font-semibold text-cream-50 shadow-soft transition-all duration-300 hover:bg-leaf-800 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-lemon {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-lemon-400 px-7 py-3.5 text-sm font-semibold text-leaf-900 shadow-soft transition-all duration-300 hover:bg-lemon-300 hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-leaf-300 bg-white/60 px-7 py-3.5 text-sm font-semibold text-leaf-800 backdrop-blur transition-all duration-300 hover:border-leaf-500 hover:bg-white;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-leaf-200 bg-leaf-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-leaf-600;
+  }
+
+  .card-soft {
+    @apply rounded-3xl border border-leaf-100 bg-white shadow-soft;
+  }
+}
+
+/* Decorative grain / texture helpers */
+.text-balance {
+  text-wrap: balance;
+}
+
+.hero-grad {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(247, 211, 60, 0.28), transparent 60%),
+    radial-gradient(900px 500px at 0% 20%, rgba(146, 185, 124, 0.22), transparent 55%),
+    linear-gradient(180deg, #fffefb 0%, #fefcf3 100%);
+}
+
+.section-grad {
+  background: linear-gradient(180deg, #ffffff 0%, #fdfbf0 100%);
+}
+
+::selection {
+  background: #fbe56e;
+  color: #1f3b19;
+}
