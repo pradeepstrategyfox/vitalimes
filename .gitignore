@@ -26,6 +26,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# apollo.io exports (personal contact data / PII — keep out of git)
+/apollo_export/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
