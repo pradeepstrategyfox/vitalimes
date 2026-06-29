@@ -16,21 +16,22 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Vita Limes — Pure Lemon, Perfected",
+  title: "Vita Limes — From the Lemon Groves of Kovilpatti",
   description:
-    "Vitalime Agrotech Pvt. Ltd. crafts premium value-added lemon products — Lemon Powder, Black Lemon, Essential Oils & more. 100% natural, trusted across India.",
+    "Vitalime Agrotech Pvt. Ltd. transforms lemons into value-added products — sourced directly from 250+ farmers across 324 hectares in Kovilpatti, Tamil Nadu. Lemon Powder, Black Lemon, Essential Oils & more.",
   keywords: [
     "lemon powder",
     "black lemon",
-    "loomi",
     "lemon essential oil",
     "Vita Limes",
     "Vitalime Agrotech",
+    "Kovilpatti lemon",
+    "lemon value chain",
   ],
   openGraph: {
-    title: "Vita Limes — Pure Lemon, Perfected",
+    title: "Vita Limes — From the Lemon Groves of Kovilpatti",
     description:
-      "Premium value-added lemon products, 100% natural and trusted across India.",
+      "Value-added lemon products, sourced directly from farmers and processed with science. Strengthening the lemon value chain across India.",
     type: "website",
   },
 };

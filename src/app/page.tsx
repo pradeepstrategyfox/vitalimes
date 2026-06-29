@@ -1,561 +1,509 @@
 import Link from "next/link";
-import {
-  Leaf,
-  ShieldCheck,
-  Sparkles,
-  Droplets,
-  ArrowRight,
-  Star,
-  Quote,
-  FlaskConical,
-  Utensils,
-  Sprout,
-  HeartHandshake,
-} from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Sprout, FlaskConical, ShieldCheck, Gem, Quote } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { ProductCard } from "@/components/ProductCard";
 import { RecipeGallery } from "@/components/RecipeGallery";
-import {
-  CornerLeaves,
-  FloatingLemon,
-  LemonHalf,
-  WaveDivider,
-} from "@/components/Decor";
 import { products } from "@/lib/products";
 
-const marquee = [
-  "Amazon",
-  "Flipkart",
-  "MyStore",
-  "IndiaMART",
-  "Deyga Organics",
-  "EN Gulf",
-  "Raaha Restaurant",
-  "Zaitoon",
-  "Global Brand Resources",
+const heroStats = [
+  { value: "324", unit: "hectares", label: "under lemon cultivation" },
+  { value: "250+", unit: "farmers", label: "in our direct network" },
+  { value: "5 MT", unit: "daily", label: "lemons procured fresh" },
 ];
 
-const whyPoints = [
+const journey = [
   {
-    icon: Leaf,
-    title: "100% Natural",
-    text: "No preservatives, no artificial colour. Just real lemons, gently processed to keep nature intact.",
+    n: "01",
+    title: "Direct Sourcing",
+    text: "We buy straight from 250+ farmers in Kovilpatti — fair prices, no middlemen, same-day procurement.",
+    img: "/img/roots-1.jpg",
   },
   {
-    icon: ShieldCheck,
-    title: "Quality Assured",
-    text: "Consistent, food-grade quality trusted by leading brands and restaurant chains across India.",
+    n: "02",
+    title: "Scientific Processing",
+    text: "Around 5 metric tonnes of lemons a day are transformed using careful, modern processing methods.",
+    img: "/img/roots-2.jpg",
   },
   {
-    icon: Droplets,
-    title: "Locks in Freshness",
-    text: "Advanced drying and pressing techniques preserve the aroma, vitamin C and zing of fresh fruit.",
+    n: "03",
+    title: "Stringent Quality",
+    text: "Every batch passes strict quality control before it becomes a finished, value-added product.",
+    img: "/img/roots-3.jpg",
   },
   {
-    icon: Sparkles,
-    title: "Endlessly Versatile",
-    text: "From your kitchen to large-scale food, herbal and cosmetic formulations — one fruit, infinite uses.",
+    n: "04",
+    title: "Value Added",
+    text: "Six refined products reach food, wellness, cosmetic and industrial customers across India.",
+    img: "/img/roots-4.jpg",
   },
+];
+
+const bigNumbers = [
+  { value: "324", label: "Hectares of lemon cultivation across Kovilpatti" },
+  { value: "250+", label: "Farmers in our direct procurement network" },
+  { value: "5 MT", label: "Lemons sourced from farmers every single day" },
+  { value: "6", label: "Value-added lemon products, and growing" },
+];
+
+const valuePillars = [
+  { icon: Sprout, title: "Direct from farmers", text: "A direct procurement network that gives growers a stable market and fair, dependable pricing." },
+  { icon: FlaskConical, title: "Scientific processing", text: "Modern, careful methods that preserve the goodness of the fruit in every product." },
+  { icon: ShieldCheck, title: "Stringent quality control", text: "Rigorous checks at every stage, so quality stays consistent batch after batch." },
+  { icon: Gem, title: "Value-added innovation", text: "Turning a humble lemon into high-value products for domestic and international markets." },
 ];
 
 const industries = [
-  { icon: Utensils, title: "Food & Beverage", text: "Lemonades, buttermilk camps, lemon rice, teas and large-scale drink manufacturing." },
-  { icon: FlaskConical, title: "Herbal & Wellness", text: "Black lemon and seed powders as natural actives in herbal formulations." },
-  { icon: Sparkles, title: "Cosmetic & Personal Care", text: "Essential and seed oils for skincare, hair care and aromatherapy." },
-  { icon: Sprout, title: "Food Processing", text: "Reliable bulk raw materials with consistent flavour, batch after batch." },
+  "Food & Beverage",
+  "Spice Manufacturers",
+  "Ayurvedic & Siddha Medicine",
+  "Nutraceutical Companies",
+  "Cosmetic Manufacturers",
+  "Industrial Customers",
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Vita Limes' Black Lemon is the backbone of our Mandi broth. The consistency and aroma are unmatched across all our branches.",
-    name: "EN Gulf Restaurants",
-    role: "Restaurant Chain",
-  },
-  {
-    quote:
-      "We rely on their Lemon Powder as a supplementary ingredient in our formulations. Pure, dependable and beautifully fresh.",
-    name: "Deyga Organics",
-    role: "Brand Partner",
-  },
-  {
-    quote:
-      "From buttermilk camps to bulk beverage runs, the powder dissolves instantly and tastes just like fresh lemon. A staple for us.",
-    name: "Global Brand Resources",
-    role: "Industrial Buyer",
-  },
-];
-
-const stats = [
-  { value: "6+", label: "Signature products" },
-  { value: "100%", label: "Natural sourcing" },
-  { value: "4.8★", label: "Average rating" },
-  { value: "Pan-India", label: "Trusted supply" },
-];
+const marquee = ["Amazon", "Flipkart", "MyStore", "IndiaMART", "Food & Beverage", "Ayurveda & Siddha", "Nutraceuticals", "Cosmetics"];
 
 export default function Home() {
-  const allRecipes = products.flatMap((p) =>
-    p.recipes.slice(0, 1).map((r) => ({ ...r, _product: p.shortName }))
-  );
+  const featuredRecipes = products.flatMap((p) => p.recipes.slice(0, 1)).slice(0, 6);
 
   return (
     <main className="overflow-x-clip">
       <Navbar />
 
-      {/* ============ HERO ============ */}
-      <section className="hero-grad relative overflow-hidden">
-        <CornerLeaves position="top-left" />
-        <CornerLeaves position="top-right" />
-        <CornerLeaves position="bottom-right" />
+      {/* ===================== 1. HERO ===================== */}
+      <section className="relative flex min-h-[100svh] items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/img/hero.jpg"
+            alt="Lemon groves of Kovilpatti"
+            fill
+            priority
+            sizes="100vw"
+            className="animate-kenburns object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-pine-950/55 via-pine-950/35 to-pine-950/85" />
+        </div>
 
-        <FloatingLemon className="absolute left-[6%] top-[55%] hidden h-14 w-14 animate-floaty opacity-90 lg:block" />
-        <FloatingLemon className="absolute right-[10%] top-[28%] hidden h-10 w-10 animate-swaySlow opacity-80 lg:block" />
+        <div className="container-vl relative z-10 pb-14 pt-32">
+          <Reveal>
+            <p className="eyebrow !text-peach-200">
+              <span className="h-px w-8 bg-clay-400" /> Vitalime Agrotech · Kovilpatti, Tamil Nadu
+            </p>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h1 className="display mt-6 max-w-4xl font-display text-[2.9rem] font-semibold leading-[1.02] tracking-tight text-peach-50 sm:text-6xl lg:text-[5rem]">
+              From the lemon <em>groves</em> of Kovilpatti
+            </h1>
+          </Reveal>
+          <Reveal delay={0.16}>
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-peach-100/85">
+              We transform lemons into value-added products — sourced directly from the
+              farmers who grow them, and crafted for the kitchens, apothecaries and
+              industries of India and beyond.
+            </p>
+          </Reveal>
+          <Reveal delay={0.24}>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Link href="#products" className="btn-clay">
+                Explore our products <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="#story" className="btn-ghost text-peach-50">
+                Read our story
+              </Link>
+            </div>
+          </Reveal>
 
-        <div className="container-vl relative z-10 grid items-center gap-10 py-16 md:py-24 lg:grid-cols-2 lg:py-28">
-          <div>
-            <Reveal>
-              <span className="eyebrow">🍋 Vitalime Agrotech Pvt. Ltd.</span>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h1 className="mt-5 font-display text-[2.6rem] font-bold leading-[1.04] tracking-tight text-leaf-900 sm:text-6xl lg:text-[4.1rem]">
-                Pure Lemon,
-                <br />
-                <span className="relative inline-block text-lemon-500">
-                  Perfected.
-                  <svg viewBox="0 0 300 24" className="absolute -bottom-2 left-0 h-3 w-full text-lemon-300" preserveAspectRatio="none">
-                    <path d="M2 14 C80 4 220 4 298 12" stroke="currentColor" strokeWidth="5" fill="none" strokeLinecap="round" />
-                  </svg>
-                </span>
-              </h1>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <p className="mt-7 max-w-lg text-lg leading-relaxed text-leaf-600">
-                Premium value-added lemon products — from spray-dried{" "}
-                <strong className="font-semibold text-leaf-800">Lemon Powder</strong> to
-                sun-cured{" "}
-                <strong className="font-semibold text-leaf-800">Black Lemon</strong>,
-                essential oils and more. Crafted by nature, refined for your kitchen and beyond.
-              </p>
-            </Reveal>
-            <Reveal delay={0.18}>
-              <div className="mt-9 flex flex-wrap items-center gap-3">
-                <Link href="#products" className="btn-primary">
-                  Shop the range <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link href="#recipes" className="btn-outline">
-                  Explore recipes
-                </Link>
-              </div>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <div className="mt-10 flex items-center gap-5">
-                <div className="flex -space-x-2">
-                  {["🍋", "🫙", "🌿", "🍵"].map((e, i) => (
-                    <span
-                      key={i}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-cream-50 bg-white text-lg shadow-sm"
-                    >
-                      {e}
+          <Reveal delay={0.32}>
+            <div className="mt-16 grid max-w-3xl grid-cols-1 gap-px overflow-hidden rounded-sm border border-peach-50/15 bg-peach-50/10 sm:grid-cols-3">
+              {heroStats.map((s) => (
+                <div key={s.label} className="bg-pine-950/30 px-6 py-5 backdrop-blur-sm">
+                  <p className="font-display text-3xl font-semibold text-peach-50">
+                    {s.value}{" "}
+                    <span className="text-sm font-normal uppercase tracking-widest text-clay-300">
+                      {s.unit}
                     </span>
-                  ))}
-                </div>
-                <div>
-                  <div className="flex items-center gap-1 text-lemon-500">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-leaf-500">
-                    Loved by <strong className="text-leaf-800">3,000+</strong> homes & businesses
                   </p>
+                  <p className="mt-1 text-sm text-peach-100/75">{s.label}</p>
                 </div>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* hero visual */}
-          <Reveal delay={0.1} className="relative">
-            <div className="relative mx-auto aspect-square w-full max-w-md">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-lemon-200 via-lemon-100 to-leaf-100 blur-2xl" />
-              <div className="absolute inset-6 rounded-full border border-dashed border-leaf-200" />
-              <div className="absolute inset-0 animate-floaty">
-                <LemonHalf className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 drop-shadow-2xl sm:h-80 sm:w-80" />
-              </div>
-              <FloatingLemon className="absolute -right-2 top-6 h-20 w-20 animate-sway" />
-              <FloatingLemon className="absolute bottom-4 left-0 h-16 w-16 animate-swaySlow" />
-
-              <div className="absolute -left-4 top-1/3 flex items-center gap-2 rounded-2xl bg-white/90 px-4 py-3 shadow-soft backdrop-blur">
-                <span className="text-2xl">🍋</span>
-                <div>
-                  <p className="text-xs font-semibold text-leaf-900">Vitamin C Rich</p>
-                  <p className="text-[11px] text-leaf-400">Naturally immune-boosting</p>
-                </div>
-              </div>
-              <div className="absolute -right-4 bottom-10 flex items-center gap-2 rounded-2xl bg-white/90 px-4 py-3 shadow-soft backdrop-blur">
-                <span className="text-2xl">🌿</span>
-                <div>
-                  <p className="text-xs font-semibold text-leaf-900">100% Natural</p>
-                  <p className="text-[11px] text-leaf-400">No preservatives</p>
-                </div>
-              </div>
+              ))}
             </div>
           </Reveal>
         </div>
-
-        {/* marquee */}
-        <div className="relative border-y border-leaf-100 bg-white/50 py-5">
-          <p className="container-vl mb-3 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-leaf-400">
-            Trusted by leading platforms & brands
-          </p>
-          <div className="relative flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
-            <div className="flex shrink-0 animate-marquee items-center gap-12 pr-12">
-              {[...marquee, ...marquee].map((m, i) => (
-                <span key={i} className="whitespace-nowrap font-display text-xl font-semibold text-leaf-300">
-                  {m}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* ============ PRODUCTS ============ */}
-      <section id="products" className="section-grad relative py-20 md:py-28">
-        <CornerLeaves position="bottom-left" />
-        <div className="container-vl relative z-10">
-          <div className="flex flex-col items-end justify-between gap-6 md:flex-row md:items-end">
-            <Reveal>
-              <div className="max-w-xl">
-                <span className="eyebrow">Our Range</span>
-                <h2 className="mt-4 font-display text-4xl font-bold leading-tight text-leaf-900 sm:text-5xl">
-                  One humble lemon,
-                  <br /> a world of goodness
-                </h2>
-                <p className="mt-4 text-leaf-500">
-                  Every product is crafted from premium hand-picked lemons — pure,
-                  potent and ready for your kitchen, wellness ritual or formulation.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <Link href="#recipes" className="btn-outline whitespace-nowrap">
-                See what you can make <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Reveal>
-          </div>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p, i) => (
-              <Reveal key={p.slug} delay={(i % 3) * 0.08}>
-                <ProductCard product={p} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ BLACK LEMON SPOTLIGHT ============ */}
-      <section className="relative overflow-hidden bg-leaf-900 py-20 text-cream-100 md:py-28">
-        <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-lemon-400/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-10 h-72 w-72 rounded-full bg-leaf-500/20 blur-3xl" />
-        <div className="container-vl relative z-10 grid items-center gap-14 lg:grid-cols-2">
-          <Reveal>
-            <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-cream-50/20 bg-cream-50/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-lemon-300">
-                ✦ Spotlight · Black Lemon
+      {/* ===================== marquee strip ===================== */}
+      <div className="border-y border-pine-900/10 bg-pine-900 py-4 text-peach-100">
+        <div className="flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
+          <div className="flex shrink-0 animate-marquee items-center gap-10 pr-10">
+            {[...marquee, ...marquee].map((m, i) => (
+              <span key={i} className="flex items-center gap-10 whitespace-nowrap text-[13px] font-semibold uppercase tracking-widest text-peach-100/60">
+                {m} <span className="text-clay-400">✦</span>
               </span>
-              <h2 className="mt-5 font-display text-4xl font-bold leading-tight text-cream-50 sm:text-5xl">
-                Meet the legendary Loomi
-              </h2>
-              <p className="mt-5 max-w-md leading-relaxed text-cream-100/80">
-                Sun-fermented until dark and intensely aromatic, our Black Lemon
-                carries a smoky-sour depth treasured across Middle-Eastern and herbal
-                kitchens — and trusted by leading Mandi restaurant chains.
-              </p>
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {[
-                  { t: "Digestive support", d: "Traditionally aids digestion after rich meals." },
-                  { t: "Antioxidant-rich", d: "Slow curing concentrates beneficial compounds." },
-                  { t: "Bold complexity", d: "A smoky-citrus flavour fresh lemon can't match." },
-                  { t: "Restaurant grade", d: "The secret behind authentic Mandi broth." },
-                ].map((b) => (
-                  <div key={b.t} className="rounded-2xl border border-cream-50/10 bg-cream-50/5 p-4">
-                    <p className="font-semibold text-cream-50">{b.t}</p>
-                    <p className="mt-1 text-sm text-cream-100/70">{b.d}</p>
-                  </div>
-                ))}
-              </div>
-
-              <Link href="/products/black-lemon" className="btn-lemon mt-9">
-                Discover Black Lemon <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="relative mx-auto aspect-square w-full max-w-sm">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-lemon-400/30 to-transparent blur-2xl" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative h-64 w-64 animate-floaty rounded-full bg-gradient-to-br from-charcoal-light to-charcoal shadow-2xl sm:h-72 sm:w-72">
-                  <div className="absolute inset-6 rounded-full border border-cream-50/10" />
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-                    <span className="text-6xl">🌑</span>
-                    <p className="mt-3 font-display text-xl font-semibold text-lemon-300">Black Lemon</p>
-                    <p className="text-xs uppercase tracking-widest text-cream-100/50">Loomi · Sun-cured</p>
-                  </div>
-                </div>
-              </div>
-              <FloatingLemon className="absolute right-2 top-6 h-16 w-16 animate-sway" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ WHY VITA LIMES ============ */}
-      <section className="relative bg-cream py-20 md:py-28">
-        <div className="container-vl">
-          <Reveal>
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="eyebrow">Why Vita Limes</span>
-              <h2 className="mt-4 font-display text-4xl font-bold leading-tight text-leaf-900 sm:text-5xl">
-                Grounded in nature, refined by craft
-              </h2>
-              <p className="mt-4 text-leaf-500">
-                We turn one of nature's most loved fruits into pure, dependable
-                ingredients — without ever cutting corners.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {whyPoints.map((w, i) => (
-              <Reveal key={w.title} delay={(i % 4) * 0.07}>
-                <div className="group h-full rounded-3xl border border-leaf-100 bg-white p-7 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-lemon-100 to-leaf-50 text-leaf-700 transition-transform duration-300 group-hover:scale-110">
-                    <w.icon className="h-7 w-7" />
-                  </span>
-                  <h3 className="mt-5 font-display text-xl font-semibold text-leaf-900">{w.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-leaf-500">{w.text}</p>
-                </div>
-              </Reveal>
             ))}
           </div>
-
-          <Reveal delay={0.1}>
-            <div className="mt-14 grid gap-4 rounded-3xl border border-leaf-100 bg-gradient-to-br from-leaf-50 to-cream p-8 sm:grid-cols-4">
-              {stats.map((s) => (
-                <div key={s.label} className="text-center">
-                  <p className="font-display text-3xl font-bold text-leaf-800 sm:text-4xl">{s.value}</p>
-                  <p className="mt-1 text-xs font-medium uppercase tracking-wide text-leaf-400">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
-      </section>
+      </div>
 
-      {/* ============ STORY ============ */}
-      <section id="story" className="relative overflow-hidden section-grad py-20 md:py-28">
-        <CornerLeaves position="top-right" />
-        <div className="container-vl relative z-10 grid items-center gap-14 lg:grid-cols-2">
+      {/* ===================== 2. FOUNDER'S MESSAGE ===================== */}
+      <section id="story" className="bg-sage-100 py-20 md:py-28">
+        <div className="container-vl grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div className="relative">
-              <div className="overflow-hidden rounded-[2rem] bg-gradient-to-br from-lemon-100 to-leaf-100 p-10 shadow-soft">
-                <div className="grid grid-cols-2 gap-4">
-                  {["🍋", "🌿", "🫙", "🧴"].map((e, i) => (
-                    <div
-                      key={i}
-                      className="flex aspect-square items-center justify-center rounded-2xl bg-white/70 text-5xl shadow-sm"
-                    >
-                      {e}
-                    </div>
-                  ))}
-                </div>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-editorial">
+                <Image
+                  src="/img/founder.jpg"
+                  alt="A farmer in the lemon-growing region of Kovilpatti"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
-              <div className="absolute -bottom-6 -right-4 rounded-2xl bg-white px-5 py-4 shadow-soft">
-                <p className="font-display text-2xl font-bold text-leaf-800">From farm</p>
-                <p className="text-sm text-lemon-600">to formulation</p>
+              <div className="absolute -bottom-5 left-5 right-10 bg-clay-500 px-6 py-5 text-peach-50 sm:right-16">
+                <p className="font-display text-lg font-semibold">A homegrown enterprise</p>
+                <p className="text-sm text-peach-100/85">Built with the farmers of Thoothukudi</p>
               </div>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
             <div>
-              <span className="eyebrow">Our Story</span>
-              <h2 className="mt-4 font-display text-4xl font-bold leading-tight text-leaf-900 sm:text-5xl">
-                Built on quality, grown with purpose
+              <p className="eyebrow">
+                <span className="h-px w-8 bg-clay-500" /> A message from our founder
+              </p>
+              <h2 className="display mt-5 font-display text-4xl font-semibold leading-[1.08] text-pine-900 sm:text-5xl">
+                Creating value where it <em>matters</em> most
               </h2>
-              <p className="mt-5 leading-relaxed text-leaf-600">
-                Vitalime Agrotech Private Limited is engaged in the manufacturing of
-                value-added lemon-based products, widely used by commercial and
-                industrial customers across India. From beverage units and buttermilk
-                camps to herbal formulators and restaurant chains, our ingredients
-                power the things people love.
-              </p>
-              <p className="mt-4 leading-relaxed text-leaf-600">
-                We're committed to supplying high-quality lemon-derived raw materials
-                to the food, herbal, cosmetic, personal care and industrial sectors —
-                ensuring consistency, quality and customer satisfaction in every batch.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {["Food", "Herbal", "Cosmetic", "Personal Care", "Industrial"].map((t) => (
-                  <span key={t} className="rounded-full border border-leaf-200 bg-white px-4 py-2 text-sm font-medium text-leaf-700">
-                    {t}
-                  </span>
-                ))}
+              <div className="mt-7 space-y-5 text-[15px] leading-relaxed text-ink/75">
+                <p>
+                  In the Kovilpatti region of Thoothukudi District, lemon cultivation is
+                  carried out across roughly 324 hectares. We have built a direct
+                  procurement network with more than 250 farmers here, sourcing
+                  high-quality lemons straight from their groves.
+                </p>
+                <p>
+                  Each day we procure around five metric tonnes of lemons directly from
+                  farmers and process them into a range of value-added products. This gives
+                  farmers a stable market and fair pricing, while raising the economic value
+                  of lemon cultivation across the region.
+                </p>
+                <p>
+                  Our mission is simple — to create sustainable value for farmers, customers
+                  and the agricultural ecosystem by transforming lemons into innovative,
+                  high-value products.
+                </p>
+              </div>
+              <div className="mt-8 border-t border-pine-900/10 pt-5">
+                <p className="font-display text-xl font-semibold text-pine-900">
+                  Vitalime Agrotech Private Limited
+                </p>
+                <p className="text-sm uppercase tracking-widest text-clay-500">Founder &amp; Team</p>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ============ RECIPES ============ */}
-      <section id="recipes" className="relative bg-cream py-20 md:py-28">
-        <div className="container-vl">
+      {/* ===================== 3. SUSTAINABILITY FULL-BLEED ===================== */}
+      <section className="relative flex min-h-[70vh] items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/img/sustainability.jpg"
+            alt="Hands holding a young seedling"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-pine-950/55" />
+        </div>
+        <div className="container-vl relative z-10 py-24 text-center">
           <Reveal>
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="eyebrow">🍴 Recipe Gallery</span>
-              <h2 className="mt-4 font-display text-4xl font-bold leading-tight text-leaf-900 sm:text-5xl">
-                Endless ways to use your lemon
-              </h2>
-              <p className="mt-4 text-leaf-500">
-                Tap any recipe to see ingredients, step-by-step method, serving size and
-                chef's tips. Every product comes with its own collection of ideas.
-              </p>
-            </div>
+            <p className="eyebrow justify-center !text-peach-200">Sustainability at our core</p>
           </Reveal>
-
-          <div className="mt-14">
-            <RecipeGallery recipes={allRecipes} productName="Vita Limes" />
-          </div>
-
           <Reveal delay={0.1}>
-            <p className="mt-10 text-center text-sm text-leaf-500">
-              Looking for more?{" "}
-              <Link href="#products" className="font-semibold text-leaf-700 underline-offset-4 hover:underline">
-                Open any product
-              </Link>{" "}
-              for its full recipe collection.
+            <h2 className="display mx-auto mt-6 max-w-4xl font-display text-3xl font-semibold leading-[1.18] text-peach-50 sm:text-5xl">
+              We&apos;re a <em>homegrown</em> company with the farmer
+              <br className="hidden sm:block" /> and the land at our <em>heart</em>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.18}>
+            <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-peach-100/85">
+              By creating steady, large-scale demand for lemons, we encourage more farmers
+              to take up cultivation and help existing growers expand — strengthening rural
+              livelihoods across Kovilpatti.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* ============ INDUSTRIES / B2B ============ */}
-      <section id="industries" className="relative overflow-hidden section-grad py-20 md:py-28">
-        <CornerLeaves position="bottom-left" />
-        <CornerLeaves position="bottom-right" />
-        <div className="container-vl relative z-10">
+      {/* ===================== 4. THE JOURNEY / ROOTS ===================== */}
+      <section className="bg-peach-100 py-20 md:py-28">
+        <div className="container-vl">
           <Reveal>
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="eyebrow">B2B & Bulk</span>
-              <h2 className="mt-4 font-display text-4xl font-bold leading-tight text-leaf-900 sm:text-5xl">
-                Powering industries across India
+            <div className="max-w-2xl">
+              <p className="eyebrow">
+                <span className="h-px w-8 bg-clay-500" /> From grove to product
+              </p>
+              <h2 className="display mt-5 font-display text-4xl font-semibold leading-[1.08] text-pine-900 sm:text-5xl">
+                Where we <em>started</em>, and how we <em>work</em>
               </h2>
-              <p className="mt-4 text-leaf-500">
-                Reliable, consistent and food-grade — Vita Limes is a trusted supply
-                partner for businesses of every scale.
+              <p className="mt-5 text-ink/70">
+                Every Vita Limes product follows the same honest path — from a farmer&apos;s
+                hand in Kovilpatti to a finished product on your shelf.
               </p>
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {industries.map((ind, i) => (
-              <Reveal key={ind.title} delay={(i % 4) * 0.07}>
-                <div className="h-full rounded-3xl border border-leaf-100 bg-white p-7 shadow-soft">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-leaf-700 text-cream-50">
-                    <ind.icon className="h-7 w-7" />
-                  </span>
-                  <h3 className="mt-5 font-display text-lg font-semibold text-leaf-900">{ind.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-leaf-500">{ind.text}</p>
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {journey.map((j, i) => (
+              <Reveal key={j.n} delay={(i % 4) * 0.08}>
+                <div className="group">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
+                    <Image
+                      src={j.img}
+                      alt={j.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      className="object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                    />
+                    <span className="absolute left-3 top-3 font-display text-sm text-peach-50/90">
+                      {j.n}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-semibold text-pine-900">{j.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/65">{j.text}</p>
                 </div>
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ===================== 5. OUR NETWORK ===================== */}
+      <section id="numbers" className="relative overflow-hidden bg-pine-900 py-20 text-peach-100 md:py-28">
+        <Image
+          src="/img/network.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-15"
+        />
+        <div className="container-vl relative z-10">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <Reveal className="lg:col-span-5">
+              <p className="eyebrow !text-clay-300">
+                <span className="h-px w-8 bg-clay-400" /> Our network
+              </p>
+              <h2 className="display mt-5 font-display text-4xl font-semibold leading-[1.08] text-peach-50 sm:text-5xl">
+                Rooted in Kovilpatti, <em>reaching</em> across India
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1} className="lg:col-span-6 lg:col-start-7">
+              <p className="text-lg leading-relaxed text-peach-100/80">
+                Our consistent, large-scale procurement has measurably increased demand for
+                lemon production in the region — and our finished products travel from these
+                groves to customers across the country and overseas.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-16 grid gap-px overflow-hidden rounded-sm border border-peach-50/15 bg-peach-50/10 sm:grid-cols-2 lg:grid-cols-4">
+            {bigNumbers.map((n) => (
+              <Reveal key={n.label}>
+                <div className="h-full bg-pine-900/60 px-7 py-10 backdrop-blur-sm">
+                  <p className="font-display text-5xl font-semibold text-peach-50 lg:text-6xl">
+                    {n.value}
+                  </p>
+                  <div className="mt-4 h-px w-10 bg-clay-400" />
+                  <p className="mt-4 text-sm leading-relaxed text-peach-100/75">{n.label}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== 6. PRODUCTS ===================== */}
+      <section id="products" className="bg-paper py-20 md:py-28">
+        <div className="container-vl">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <Reveal>
+              <div className="max-w-xl">
+                <p className="eyebrow">
+                  <span className="h-px w-8 bg-clay-500" /> Our key products
+                </p>
+                <h2 className="display mt-5 font-display text-4xl font-semibold leading-[1.08] text-pine-900 sm:text-5xl">
+                  One lemon, <em>six</em> ways to use it
+                </h2>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="max-w-xs text-ink/65">
+                Each product is crafted from the same hand-picked Kovilpatti lemons — pure,
+                potent and ready for your kitchen, ritual or formulation.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-14 grid gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((p, i) => (
+              <Reveal key={p.slug} delay={(i % 3) * 0.08}>
+                <ProductCard product={p} index={i} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== 7. APPLICATIONS ===================== */}
+      <section className="relative overflow-hidden bg-sage-100 py-20 md:py-28">
+        <div className="container-vl grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <div>
+              <p className="eyebrow">
+                <span className="h-px w-8 bg-clay-500" /> Trusted across industries
+              </p>
+              <h2 className="display mt-5 font-display text-4xl font-semibold leading-[1.08] text-pine-900 sm:text-5xl">
+                Put to work in <em>every</em> corner of the market
+              </h2>
+              <p className="mt-6 text-[15px] leading-relaxed text-ink/70">
+                Our value-added lemon products are widely used by the food and beverage
+                industry, spice manufacturers, Ayurvedic and Siddha medicine producers,
+                nutraceutical companies, cosmetic manufacturers and industrial customers
+                across India.
+              </p>
+              <ul className="mt-8 grid gap-px overflow-hidden rounded-sm border border-pine-900/10 bg-pine-900/10 sm:grid-cols-2">
+                {industries.map((ind) => (
+                  <li
+                    key={ind}
+                    className="flex items-center gap-3 bg-sage-50 px-5 py-4 text-sm font-semibold text-pine-800"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-clay-500" />
+                    {ind}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="mt-12 flex flex-col items-center justify-between gap-5 rounded-3xl bg-leaf-800 p-8 text-cream-50 sm:flex-row sm:p-10">
-              <div className="flex items-center gap-4">
-                <HeartHandshake className="h-10 w-10 shrink-0 text-lemon-300" />
-                <div>
-                  <p className="font-display text-2xl font-semibold">Need bulk or private label?</p>
-                  <p className="text-sm text-cream-100/80">Let's build something fresh together.</p>
-                </div>
-              </div>
-              <a href="mailto:hello@vitalimes.com" className="btn-lemon whitespace-nowrap">
-                Partner with us <ArrowRight className="h-4 w-4" />
-              </a>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-editorial">
+              <Image
+                src="/img/applications.jpg"
+                alt="Lemon used across food and wellness applications"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ============ TESTIMONIALS ============ */}
-      <section className="relative bg-cream py-20 md:py-28">
+      {/* ===================== 8. VALUE CHAIN / WHY US ===================== */}
+      <section id="value-chain" className="bg-paper py-20 md:py-28">
         <div className="container-vl">
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
-              <span className="eyebrow">Loved & Trusted</span>
-              <h2 className="mt-4 font-display text-4xl font-bold leading-tight text-leaf-900 sm:text-5xl">
-                Don't just take our word for it
+              <p className="eyebrow justify-center">Why Vita Limes</p>
+              <h2 className="display mt-5 font-display text-4xl font-semibold leading-[1.08] text-pine-900 sm:text-5xl">
+                Strengthening the lemon <em>value chain</em>
               </h2>
+              <p className="mt-5 text-ink/70">
+                Through direct sourcing, scientific processing and stringent quality control,
+                we raise farmers&apos; incomes while supplying high-quality lemon products to
+                markets at home and abroad.
+              </p>
             </div>
           </Reveal>
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={(i % 3) * 0.08}>
-                <figure className="flex h-full flex-col rounded-3xl border border-leaf-100 bg-white p-7 shadow-soft">
-                  <Quote className="h-8 w-8 text-lemon-300" />
-                  <blockquote className="mt-4 flex-1 text-leaf-700">“{t.quote}”</blockquote>
-                  <figcaption className="mt-6 flex items-center gap-3 border-t border-leaf-100 pt-5">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-leaf-100 text-lg">🍋</span>
-                    <div>
-                      <p className="font-semibold text-leaf-900">{t.name}</p>
-                      <p className="text-xs text-leaf-400">{t.role}</p>
-                    </div>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ============ NEWSLETTER CTA ============ */}
-      <section className="relative overflow-hidden py-10 md:py-16">
-        <div className="container-vl">
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-lemon-300 via-lemon-200 to-lemon-100 px-7 py-14 text-center shadow-soft sm:px-12 sm:py-20">
-            <FloatingLemon className="absolute -left-6 -top-6 h-28 w-28 animate-sway opacity-60" />
-            <FloatingLemon className="absolute -bottom-8 -right-4 h-32 w-32 animate-swaySlow opacity-60" />
-            <div className="relative z-10 mx-auto max-w-xl">
-              <h2 className="font-display text-3xl font-bold leading-tight text-leaf-900 sm:text-4xl">
-                Get a squeeze of freshness in your inbox
-              </h2>
-              <p className="mt-3 text-leaf-700">
-                Recipes, wellness tips and early access to new launches — straight from
-                the grove.
-              </p>
-              <form className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your email"
-                  className="w-full rounded-full border border-leaf-200 bg-white/90 px-5 py-3.5 text-sm text-leaf-800 placeholder:text-leaf-400 focus:border-leaf-500 focus:outline-none"
+          <div className="mt-16 grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              <div className="relative aspect-[5/4] overflow-hidden rounded-sm shadow-editorial">
+                <Image
+                  src="/img/quality.jpg"
+                  alt="Fresh quality lemons"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
-                <button type="submit" className="btn-primary whitespace-nowrap">
-                  Subscribe
-                </button>
-              </form>
-              <p className="mt-3 text-xs text-leaf-600">No spam — just good, fresh things. 🍋</p>
+              </div>
+            </Reveal>
+
+            <div className="grid gap-px overflow-hidden rounded-sm border border-pine-900/10 bg-pine-900/10 sm:grid-cols-2">
+              {valuePillars.map((p, i) => (
+                <Reveal key={p.title} delay={(i % 2) * 0.08}>
+                  <div className="h-full bg-paper p-7">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-pine-800 text-peach-50">
+                      <p.icon className="h-6 w-6" />
+                    </span>
+                    <h3 className="mt-5 font-display text-lg font-semibold text-pine-900">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink/65">{p.text}</p>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <WaveDivider color="#16290F" />
+      {/* ===================== 9. RECIPES ===================== */}
+      <section id="recipes" className="bg-peach-100 py-20 md:py-28">
+        <div className="container-vl">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="eyebrow">
+                <span className="h-px w-8 bg-clay-500" /> The lemon kitchen
+              </p>
+              <h2 className="display mt-5 font-display text-4xl font-semibold leading-[1.08] text-pine-900 sm:text-5xl">
+                A world of ways to <em>use</em> your lemon
+              </h2>
+              <p className="mt-5 text-ink/70">
+                Tap any recipe for ingredients, a step-by-step method, serving size and tips.
+                Every product opens up its own collection of ideas.
+              </p>
+            </div>
+          </Reveal>
+          <div className="mt-12">
+            <RecipeGallery recipes={featuredRecipes} productName="Vita Limes" />
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== 10. MISSION / CTA ===================== */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/img/cta.jpg" alt="" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-pine-950/72" />
+        </div>
+        <div className="container-vl relative z-10 py-24 md:py-32">
+          <div className="max-w-3xl">
+            <Quote className="h-10 w-10 text-clay-400" />
+            <Reveal>
+              <p className="display mt-6 font-display text-3xl font-medium leading-[1.25] text-peach-50 sm:text-[2.6rem]">
+                We exist to transform lemons into innovative, high-value products — creating
+                sustainable value for <em>farmers</em>, <em>customers</em> and the whole
+                agricultural ecosystem.
+              </p>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link href="#products" className="btn-clay">
+                  Shop the range <ArrowRight className="h-4 w-4" />
+                </Link>
+                <a href="mailto:hello@vitalimes.com" className="btn-ghost text-peach-50">
+                  Partner with us
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

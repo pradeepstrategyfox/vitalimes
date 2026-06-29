@@ -1,36 +1,30 @@
 import Link from "next/link";
-import { Logo, LemonSprig } from "./Decor";
 import { products } from "@/lib/products";
-import { Instagram, Facebook, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-leaf-900 text-cream-100">
-      <div className="pointer-events-none absolute -left-8 -top-8 opacity-20">
-        <LemonSprig className="h-48 w-40 animate-swaySlow" />
-      </div>
-      <div className="pointer-events-none absolute -right-6 bottom-0 rotate-180 opacity-20">
-        <LemonSprig className="h-48 w-40 animate-sway" />
-      </div>
-
-      <div className="container-vl relative z-10 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <div className="[&_*]:!text-cream-50">
-              <Logo />
-            </div>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream-100/80">
-              Vitalime Agrotech Private Limited crafts premium value-added lemon
-              products — from spray-dried lemon powder to sun-cured black lemon.
-              100% natural, consistently pure, and trusted across India.
+    <footer id="contact" className="bg-pine-950 text-peach-100">
+      <div className="container-vl py-16 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className="font-display text-3xl font-semibold text-peach-50">
+              Vita <span className="italic-serif">Limes</span>
             </p>
-            <div className="mt-6 flex gap-3">
-              {[Instagram, Facebook, Twitter].map((Icon, i) => (
+            <p className="mt-1 text-[10px] font-semibold uppercase tracking-widest2 text-clay-300">
+              By Vitalime Agrotech Pvt. Ltd.
+            </p>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-peach-100/70">
+              Transforming the lemons of Kovilpatti into value-added products — and
+              building a fairer, more sustainable value chain for the farmers who grow them.
+            </p>
+            <div className="mt-7 flex gap-3">
+              {[Instagram, Facebook, Linkedin].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-cream-50/10 text-cream-50 transition hover:bg-lemon-400 hover:text-leaf-900"
                   aria-label="social"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-peach-100/15 text-peach-100 transition hover:border-clay-400 hover:bg-clay-500 hover:text-peach-50"
                 >
                   <Icon className="h-[18px] w-[18px]" />
                 </a>
@@ -38,12 +32,14 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <h4 className="font-display text-lg font-semibold text-cream-50">Shop</h4>
-            <ul className="mt-4 space-y-2.5 text-sm text-cream-100/80">
+          <div className="lg:col-span-2">
+            <h4 className="text-[11px] font-semibold uppercase tracking-widest2 text-peach-100/50">
+              Products
+            </h4>
+            <ul className="mt-5 space-y-3 text-sm text-peach-100/80">
               {products.map((p) => (
                 <li key={p.slug}>
-                  <Link href={`/products/${p.slug}`} className="transition hover:text-lemon-300">
+                  <Link href={`/products/${p.slug}`} className="transition hover:text-clay-300">
                     {p.shortName}
                   </Link>
                 </li>
@@ -51,53 +47,59 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-display text-lg font-semibold text-cream-50">Company</h4>
-            <ul className="mt-4 space-y-2.5 text-sm text-cream-100/80">
-              {["Our Story", "Recipes", "B2B & Bulk", "Quality & Sourcing", "Contact"].map((x) => (
-                <li key={x}>
-                  <Link href="/#story" className="transition hover:text-lemon-300">
-                    {x}
+          <div className="lg:col-span-2">
+            <h4 className="text-[11px] font-semibold uppercase tracking-widest2 text-peach-100/50">
+              Company
+            </h4>
+            <ul className="mt-5 space-y-3 text-sm text-peach-100/80">
+              {[
+                { label: "Our Story", href: "/#story" },
+                { label: "The Value Chain", href: "/#value-chain" },
+                { label: "In Numbers", href: "/#numbers" },
+                { label: "Recipes", href: "/#recipes" },
+                { label: "B2B & Bulk", href: "/#contact" },
+              ].map((x) => (
+                <li key={x.label}>
+                  <Link href={x.href} className="transition hover:text-clay-300">
+                    {x.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-display text-lg font-semibold text-cream-50">Reach Us</h4>
-            <ul className="mt-4 space-y-3 text-sm text-cream-100/80">
+          <div className="lg:col-span-4">
+            <h4 className="text-[11px] font-semibold uppercase tracking-widest2 text-peach-100/50">
+              Reach the grove
+            </h4>
+            <ul className="mt-5 space-y-4 text-sm text-peach-100/80">
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-lemon-300" />
-                <span>Vitalime Agrotech Pvt. Ltd., India</span>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-clay-300" />
+                <span>Kovilpatti, Thoothukudi District, Tamil Nadu, India</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 shrink-0 text-lemon-300" />
-                <a href="mailto:hello@vitalimes.com" className="hover:text-lemon-300">
+                <Mail className="h-4 w-4 shrink-0 text-clay-300" />
+                <a href="mailto:hello@vitalimes.com" className="hover:text-clay-300">
                   hello@vitalimes.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 shrink-0 text-lemon-300" />
+                <Phone className="h-4 w-4 shrink-0 text-clay-300" />
                 <span>+91 00000 00000</span>
               </li>
             </ul>
-            <p className="mt-5 text-xs uppercase tracking-wider text-cream-100/60">
-              Also available on
-            </p>
-            <p className="mt-1 text-sm text-cream-100/80">
-              Amazon · Flipkart · MyStore · IndiaMART
-            </p>
+            <a
+              href="mailto:hello@vitalimes.com"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-clay-300 hover:text-clay-400"
+            >
+              Partner with us <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-cream-50/10 pt-7 text-xs text-cream-100/60 sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-peach-100/10 pt-8 text-xs text-peach-100/50 sm:flex-row">
           <p>© {new Date().getFullYear()} Vitalime Agrotech Private Limited. All rights reserved.</p>
-          <div className="flex gap-5">
-            <a href="#" className="hover:text-lemon-300">Privacy Policy</a>
-            <a href="#" className="hover:text-lemon-300">Terms of Service</a>
-            <a href="#" className="hover:text-lemon-300">Shipping</a>
-          </div>
+          <p>Also on Amazon · Flipkart · MyStore · IndiaMART</p>
         </div>
       </div>
     </footer>

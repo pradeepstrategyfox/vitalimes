@@ -1,59 +1,50 @@
 import Link from "next/link";
-import { Star, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import type { Product } from "@/lib/products";
-import { ProductVisual } from "./ProductVisual";
 
-export function ProductCard({ product }: { product: Product }) {
-  const off = Math.round(((product.mrp - product.price) / product.mrp) * 100);
+export function ProductCard({ product, index }: { product: Product; index?: number }) {
+  const num = String((index ?? 0) + 1).padStart(2, "0");
   return (
     <Link
       href={`/products/${product.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-3xl border border-leaf-100 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-glow"
+      className="group flex flex-col"
     >
-      <div className="relative aspect-[4/3.4] overflow-hidden bg-gradient-to-br from-cream-50 to-leaf-50">
-        <div className="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(120px_120px_at_70%_30%,rgba(247,211,60,0.35),transparent)]" />
+      <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-sage-100">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(max-width: 768px) 50vw, 33vw"
+          className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.06]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-pine-950/55 via-transparent to-transparent" />
+        <span className="absolute left-4 top-4 font-display text-sm text-peach-50/80">{num}</span>
         {product.badge && (
-          <span className="absolute left-4 top-4 z-10 rounded-full bg-leaf-700 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cream-50">
+          <span className="absolute right-4 top-4 rounded-sm bg-clay-500 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-peach-50">
             {product.badge}
           </span>
         )}
-        {off > 0 && (
-          <span className="absolute right-4 top-4 z-10 rounded-full bg-lemon-400 px-2.5 py-1 text-[10px] font-bold text-leaf-900">
-            {off}% OFF
-          </span>
-        )}
-        <ProductVisual
-          product={product}
-          className="absolute inset-0 m-auto h-[88%] w-[88%] transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-2"
-        />
-      </div>
-
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-center gap-1.5 text-xs font-medium text-lemon-600">
-          <Star className="h-3.5 w-3.5 fill-lemon-400 text-lemon-400" />
-          {product.rating}
-          <span className="text-leaf-300">·</span>
-          <span className="text-leaf-400">{product.reviews} reviews</span>
-        </div>
-        <h3 className="mt-2 font-display text-lg font-semibold leading-snug text-leaf-900">
-          {product.shortName}
-        </h3>
-        <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-leaf-500">
-          {product.description}
-        </p>
-
-        <div className="mt-4 flex items-end justify-between">
+        <div className="absolute inset-x-4 bottom-4 flex items-end justify-between">
           <div>
-            <div className="flex items-baseline gap-2">
-              <span className="font-display text-xl font-bold text-leaf-900">₹{product.price}</span>
-              <span className="text-sm text-leaf-300 line-through">₹{product.mrp}</span>
-            </div>
-            <span className="text-xs text-leaf-400">{product.unit}</span>
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-peach-100/80">
+              {product.category}
+            </p>
+            <p className="font-display text-2xl font-semibold text-peach-50">
+              ₹{product.price}
+              <span className="ml-1 text-sm font-normal text-peach-100/70">/ {product.unit}</span>
+            </p>
           </div>
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-leaf-50 text-leaf-700 transition-all duration-300 group-hover:bg-lemon-400 group-hover:text-leaf-900">
+          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-peach-50 text-pine-900 transition-all duration-300 group-hover:bg-clay-500 group-hover:text-peach-50">
             <ArrowUpRight className="h-5 w-5" />
           </span>
         </div>
+      </div>
+
+      <div className="mt-4">
+        <h3 className="font-display text-xl font-semibold text-pine-900">{product.name}</h3>
+        <p className="mt-1 text-sm italic-serif font-display text-clay-500">{product.tagline}</p>
+        <p className="mt-2 text-sm leading-relaxed text-ink/65 line-clamp-2">{product.description}</p>
       </div>
     </Link>
   );

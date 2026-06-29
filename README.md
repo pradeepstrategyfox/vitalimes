@@ -1,31 +1,46 @@
-# Vita Limes 🍋
+# Vita Limes — Vitalime Agrotech Pvt. Ltd.
 
-A modern, state-of-the-art website revamp for **Vitalime Agrotech Private Limited** —
-a manufacturer of premium, value-added lemon-based products.
+An editorial, farm-to-shelf ecommerce experience for **Vitalime Agrotech Private Limited**,
+the company transforming the lemons of **Kovilpatti, Tamil Nadu** into value-added products.
 
-Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS** and
-**Framer Motion**, with a bright, organic, light-theme design language.
+Designed to feel like an agricultural annual-report / brand story rather than a typical
+storefront — earthy palette, real full-HD photography, serif-led editorial typography.
 
-## ✨ Highlights
+Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS** and **Framer Motion**.
 
-- **Home page** — immersive hero, product showcase, Black Lemon spotlight,
-  brand story, an interactive recipe gallery, B2B/industries section,
-  testimonials and a newsletter CTA.
-- **Product pages** (`/products/[slug]`) — gallery, pricing, benefits,
-  a dedicated **"How to use"** section and a **per-product interactive recipe
-  gallery** (click a recipe for ingredients, step-by-step method, serving size,
-  tips & nutrition) — exactly as outlined in the client brief.
-- **Signature decor** — hand-built SVG lemon sprigs gently swaying in the corners,
-  floating lemons and organic wave dividers, kept elegant and minimal so the
-  content stays in focus.
-- Fully responsive, accessible and statically pre-rendered for speed.
+## Design language
 
-## 🧱 Products
+- **Palette** — deep pine green, soft sage/olive, warm peach/cream, terracotta clay accent.
+- **Type** — Fraunces (display serif, with italic emphasis) + Plus Jakarta Sans (body).
+- **Imagery** — real full-HD farm, grove and lemon photography (in `public/img`).
+- No cartoon illustrations or playful animations — only tasteful scroll reveals and a
+  subtle hero ken-burns.
 
-Lemon Powder · Black Lemon (Loomi) · Black Lemon Powder · Lemon Essential Oil ·
-Lemon Seed Powder · Lemon Seed Oil
+## Home page (10 sections)
 
-## 🚀 Getting started
+1. Cinematic hero — the lemon groves of Kovilpatti, with key stats
+2. Founder's message (the company in its own words)
+3. Full-bleed sustainability statement
+4. From grove to product — the 4-step journey
+5. Our Network — direct-from-farmer procurement, "in numbers"
+6. Our Key Products — the six value-added lemon products
+7. Trusted across industries — applications
+8. The lemon value chain — why Vita Limes
+9. The lemon kitchen — interactive recipe gallery
+10. Mission statement + CTA
+
+## Product pages (`/products/[slug]`)
+
+Editorial detail with real imagery, benefits, a **How to use** section, an **interactive
+recipe gallery** (modal with ingredients, method, serving size, tips & nutrition) and
+related products.
+
+## Products
+
+Lemon Powder · Black Lemon · Black Lemon Powder · Lemon Essential Oil · Lemon Seed Powder ·
+Lemon Seed Oil
+
+## Getting started
 
 ```bash
 npm install
@@ -33,15 +48,9 @@ npm run dev      # http://localhost:3000
 npm run build    # production build
 ```
 
-## 🛠 Tech
+Deployed on **Vercel** (production branch: `main`).
 
-| Layer | Choice |
-| --- | --- |
-| Framework | Next.js 15 (App Router) |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| Animation | Framer Motion |
-| Icons | lucide-react |
-| Fonts | Fraunces (display) + Plus Jakarta Sans (body) |
+---
 
-Deployed on **Vercel**.
+_Photography sourced from Pexels (royalty-free) for demonstration; swap in the brand's own
+product and farm photography for launch._

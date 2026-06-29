@@ -1,15 +1,16 @@
 import Link from "next/link";
-import { FloatingLemon } from "@/components/Decor";
 
 export default function NotFound() {
   return (
-    <main className="hero-grad flex min-h-screen flex-col items-center justify-center px-6 text-center">
-      <FloatingLemon className="h-24 w-24 animate-floaty" />
-      <h1 className="mt-6 font-display text-6xl font-bold text-leaf-900">404</h1>
-      <p className="mt-3 max-w-sm text-leaf-500">
-        This page seems to have rolled off the table. Let's get you back to the fresh stuff.
+    <main className="flex min-h-screen flex-col items-center justify-center bg-pine-900 px-6 text-center text-peach-50">
+      <p className="text-[12px] font-semibold uppercase tracking-widest2 text-clay-300">
+        Page not found
       </p>
-      <Link href="/" className="btn-primary mt-8">
+      <h1 className="mt-4 font-display text-7xl font-semibold">404</h1>
+      <p className="mt-4 max-w-sm text-peach-100/70">
+        This page has wandered off into the grove. Let&apos;s get you back to the fresh stuff.
+      </p>
+      <Link href="/" className="btn-clay mt-9">
         Back to home
       </Link>
     </main>
