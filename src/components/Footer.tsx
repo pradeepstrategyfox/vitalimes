@@ -15,7 +15,7 @@ export default function Footer() {
               By Vitalime Agrotech Pvt. Ltd.
             </p>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-peach-100/70">
-              Transforming the lemons of Kovilpatti into value-added products — and
+              Transforming the lemons of Kovilpatti into value-added products, and
               building a fairer, more sustainable value chain for the farmers who grow them.
             </p>
             <div className="mt-7 flex gap-3">
@@ -54,10 +54,10 @@ export default function Footer() {
             <ul className="mt-5 space-y-3 text-sm text-peach-100/80">
               {[
                 { label: "Our Story", href: "/#story" },
-                { label: "The Value Chain", href: "/#value-chain" },
-                { label: "In Numbers", href: "/#numbers" },
+                { label: "B2B Sales", href: "/#b2b" },
+                { label: "Future Products", href: "/#future" },
                 { label: "Recipes", href: "/#recipes" },
-                { label: "B2B & Bulk", href: "/#contact" },
+                { label: "In Numbers", href: "/#numbers" },
               ].map((x) => (
                 <li key={x.label}>
                   <Link href={x.href} className="transition hover:text-clay-300">

@@ -39,9 +39,9 @@ export const products: Product[] = [
     tagline: "Sunshine, spray-dried",
     image: "/img/p-lemon-powder.jpg",
     description:
-      "The bright, tangy soul of a fresh lemon — gently dried into a fine, shelf-stable powder that dissolves in an instant.",
+      "The bright, tangy soul of a fresh lemon, gently dried into a fine, shelf-stable powder that dissolves in an instant.",
     longDescription:
-      "Made from lemons procured the same day from Kovilpatti's groves, our Lemon Powder locks in the citrus brightness, vitamin C and aroma of the fresh fruit through careful scientific drying. No preservatives, no added colour — just pure concentrated lemon, ready for kitchens, beverage units and food processors at any scale.",
+      "Made from lemons procured the same day from Kovilpatti's groves, our Lemon Powder locks in the citrus brightness, vitamin C and aroma of the fresh fruit through careful scientific drying. No preservatives, no added colour. Just pure concentrated lemon, ready for kitchens, beverage units and food processors at any scale.",
     price: 249,
     mrp: 320,
     unit: "200g",
@@ -51,9 +51,9 @@ export const products: Product[] = [
     category: "Powders",
     highlights: ["100% Natural", "No Preservatives", "Instantly Soluble", "Vitamin C Rich"],
     benefits: [
-      { title: "Year-round freshness", text: "The zing of fresh lemon without the squeezing, seeds or spoilage — a long shelf life with zero compromise on flavour." },
+      { title: "Year-round freshness", text: "The zing of fresh lemon without the squeezing, seeds or spoilage, with a long shelf life with zero compromise on flavour." },
       { title: "Immunity & wellness", text: "Naturally rich in vitamin C and antioxidants, valued by nutraceutical and wellness producers." },
-      { title: "Consistent at scale", text: "Every batch delivers the same balanced tang — built for beverage units, buttermilk camps and large kitchens." },
+      { title: "Consistent at scale", text: "Every batch delivers the same balanced tang, built for beverage units, buttermilk camps and large kitchens." },
     ],
     howToUse: [
       { step: "Refreshing lemonade", detail: "Stir a teaspoon into chilled water with sugar or honey." },
@@ -114,7 +114,7 @@ export const products: Product[] = [
     tagline: "Sun-cured, smoky, ancient",
     image: "/img/p-black-lemon.jpg",
     description:
-      "Whole lemons slowly sun-cured to a deep, smoky-sour intensity — a treasure of Middle-Eastern and Ayurvedic kitchens.",
+      "Whole lemons slowly sun-cured to a deep, smoky-sour intensity. A treasure of Middle-Eastern and Ayurvedic kitchens.",
     longDescription:
       "Also known as loomi, our Black Lemon is sun-cured until the fruit turns dark and intensely aromatic, concentrating its tang into a complex, earthy depth. Prized by Siddha and Ayurvedic producers, spice houses and restaurant chains, it transforms stews, broths and herbal blends like nothing else.",
     price: 399,
@@ -149,7 +149,7 @@ export const products: Product[] = [
           "Simmer gently for 40 minutes until tender.",
           "Discard the lemons and serve over rice.",
         ],
-        tips: "One loomi gives a subtle tang — add a second for bolder depth.",
+        tips: "One loomi gives a subtle tang; add a second for bolder depth.",
       },
       {
         name: "Black Lemon Herbal Tea",
@@ -176,7 +176,7 @@ export const products: Product[] = [
     description:
       "All the smoky-sour depth of sun-cured black lemon, milled into a fine powder for instant, even seasoning.",
     longDescription:
-      "A concentrated, ready-to-use form of our Black Lemon, prized by herbal formulators, spice houses and food processors. The fine, uniform milling delivers reliable, earthy tang batch after batch — a little goes a remarkably long way.",
+      "A concentrated, ready-to-use form of our Black Lemon, prized by herbal formulators, spice houses and food processors. The fine, uniform milling delivers reliable, earthy tang batch after batch. A little goes a remarkably long way.",
     price: 349,
     mrp: 420,
     unit: "100g",
@@ -219,7 +219,7 @@ export const products: Product[] = [
     tagline: "Pure citrus, distilled",
     image: "/img/p-essential-oil.jpg",
     description:
-      "A bright, uplifting essential oil extracted from fresh lemon zest — for aromatherapy, skincare and personal care.",
+      "A bright, uplifting essential oil extracted from fresh lemon zest, used in aromatherapy, skincare and personal care.",
     longDescription:
       "Steam-extracted from the zest of fresh Kovilpatti lemons, our Essential Oil captures the purest, most uplifting citrus aroma. Therapeutic-grade and versatile, it is a staple for cosmetic manufacturers, aromatherapists and personal-care formulators.",
     price: 549,
@@ -265,7 +265,7 @@ export const products: Product[] = [
     tagline: "Nothing wasted, all nourishing",
     image: "/img/p-seed-powder.jpg",
     description:
-      "An often-overlooked treasure — nutrient-dense lemon seeds, dried and finely milled for natural hair and skin care.",
+      "An often-overlooked treasure: nutrient-dense lemon seeds, dried and finely milled for natural hair and skin care.",
     longDescription:
       "Part of our zero-waste philosophy, lemon seeds are dried and milled into a clean, plant-based powder loved by natural cosmetic makers. A nutrient-dense active for hair packs, scalp treatments and personal-care formulations.",
     price: 299,
@@ -277,7 +277,7 @@ export const products: Product[] = [
     highlights: ["Nutrient Dense", "Plant-Based", "Cosmetic Grade", "Zero Waste"],
     benefits: [
       { title: "Stronger hair", text: "A natural active traditionally used to nourish hair and scalp." },
-      { title: "Clean beauty", text: "100% plant-based — perfect for natural cosmetic formulations." },
+      { title: "Clean beauty", text: "100% plant-based, perfect for natural cosmetic formulations." },
       { title: "Multi-use", text: "Blends easily into packs, masks and personal-care products." },
     ],
     howToUse: [
@@ -310,7 +310,7 @@ export const products: Product[] = [
     tagline: "Lightweight, cold-pressed",
     image: "/img/p-seed-oil.jpg",
     description:
-      "A delicate, nutrient-rich oil cold-pressed from lemon seeds — a gentle base for hair and skincare formulations.",
+      "A delicate, nutrient-rich oil cold-pressed from lemon seeds, a gentle base for hair and skincare formulations.",
     longDescription:
       "Cold-pressed from carefully selected lemon seeds, this lightweight oil is a gentle, fast-absorbing carrier for natural hair and skincare. Rich in beneficial compounds, it is a clean-beauty favourite for formulators and home users alike.",
     price: 499,

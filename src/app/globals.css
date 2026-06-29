@@ -47,11 +47,10 @@ body {
   text-wrap: balance;
 }
 
-/* Editorial display emphasis: italic serif inside headings */
+/* Editorial display emphasis: italic inside headings */
 .display em,
 .italic-serif {
   font-style: italic;
-  font-variation-settings: "SOFT" 40, "WONK" 1;
 }
 
 ::selection {

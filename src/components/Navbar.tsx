@@ -8,7 +8,7 @@ import { products } from "@/lib/products";
 const navLinks = [
   { label: "Our Story", href: "/#story" },
   { label: "Products", href: "/#products" },
-  { label: "The Value Chain", href: "/#value-chain" },
+  { label: "B2B", href: "/#b2b" },
   { label: "Recipes", href: "/#recipes" },
   { label: "Contact", href: "/#contact" },
 ];
