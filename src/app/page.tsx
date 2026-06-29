@@ -560,14 +560,16 @@ export default function Home() {
       {/* ===================== 13. MISSION / CTA ===================== */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/img/cta2.jpg" alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-pine-950/72" />
+          <Image src="/img/cta-citrus.jpg" alt="" fill sizes="100vw" className="object-cover" />
+          {/* darken overall, then a stronger left-to-right scrim so white text stays legible */}
+          <div className="absolute inset-0 bg-pine-950/75" />
+          <div className="absolute inset-0 bg-gradient-to-r from-pine-950/85 via-pine-950/60 to-pine-950/40" />
         </div>
         <div className="container-vl relative z-10 py-24 md:py-32">
-          <div className="max-w-3xl">
-            <Quote className="h-10 w-10 text-clay-400" />
+          <div className="max-w-3xl [text-shadow:0_2px_18px_rgba(12,18,8,0.55)]">
+            <Quote className="h-10 w-10 text-clay-300" />
             <Reveal>
-              <p className="display mt-6 font-display text-3xl font-semibold leading-[1.25] text-peach-50 sm:text-[2.6rem]">
+              <p className="display mt-6 font-display text-3xl font-semibold leading-[1.25] text-white sm:text-[2.6rem]">
                 We exist to transform lemons into innovative, high-value products, creating
                 sustainable value for <em>farmers</em>, <em>customers</em> and the whole
                 agricultural ecosystem.
